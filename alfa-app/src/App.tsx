@@ -1,47 +1,42 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import axios from "axios";
-
-interface BreedList {
-  [key: string]: string[];
-}
+import { fetchDogBreeds } from "./utils/apiUtils";
+import { BreedListType } from "./interfaces";
+import Loading from "./components/Loading";
+import BreedList from "./components/BreedList";
+import ErrorComponent from "./components/ErrorComponent";
 
 function App() {
-  const url = "https://dog.ceo/api/breeds/list/all";
-  const [breeds, SetBreeds] = useState<BreedList | null>(null);
+  const [breeds, setBreeds] = useState<BreedListType | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    axios
-      .get(url)
-      .then((response) => {
-        SetBreeds(response.data.message);
+    const fetchData = async () => {
+      try {
+        const data = await fetchDogBreeds();
+        setBreeds(data);
+      } catch (error) {
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError("An unexpected error occurred");
+        }
+      } finally {
         setIsLoading(false);
-      })
-      .catch((error: Error) => {
-        console.error("Error fetching data:", error);
-        setError("Error loading breeds");
-        setIsLoading(false);
-      });
+      }
+    };
+
+    fetchData();
   }, []);
 
   return (
     <>
-      <h1>Products</h1>
+      <h1>Dog Breeds</h1>
 
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : error ? (
-        <p>{error}</p>
-      ) : (
-        <ul>
-          {breeds &&
-            Object.keys(breeds).map((breedName) => (
-              <li key={breedName}>{breedName}</li>
-            ))}
-        </ul>
-      )}
+      {isLoading && <Loading />}
+      {error && <ErrorComponent message={error} />}
+      {breeds && !isLoading && !error && <BreedList breeds={breeds} />}
     </>
   );
 }
