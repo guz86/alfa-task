@@ -1,17 +1,14 @@
-import React, { useState } from "react";
 import { FaHeart } from "react-icons/fa";
 import styles from "./BreedCard.module.css";
-
-interface BreedCardProps {
-  breedName: string;
-  imageUrl?: string;
-}
+import { BreedCardProps } from "../../interfaces";
+import { useStore } from "../../store/useStore";
 
 const BreedCard: React.FC<BreedCardProps> = ({ breedName, imageUrl }) => {
-  const [isLiked, setIsLiked] = useState(false);
+  const { likedBreeds, toggleLike } = useStore();
+  const isLiked = likedBreeds.has(breedName);
 
   const handleLike = () => {
-    setIsLiked((prev) => !prev);
+    toggleLike(breedName);
   };
 
   return (

@@ -15,3 +15,8 @@ export interface BreedImage {
   message: string;
   status: string;
 }
+
+export interface BreedCardProps {
+  breedName: string;
+  imageUrl?: string;
+}
