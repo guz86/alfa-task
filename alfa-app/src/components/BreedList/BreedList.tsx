@@ -1,4 +1,3 @@
-import React from "react";
 import { BreedListProps } from "../../interfaces";
 import BreedCard from "../BreedCard/BreedCard";
 import styles from "./BreedList.module.css";

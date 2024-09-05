@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useStore } from "../store/useStore";
 import { BreedImage, BreedListType } from "../interfaces";
 import { fetchDogBreeds, fetchRandomImageBreed } from "../utils/apiUtils";

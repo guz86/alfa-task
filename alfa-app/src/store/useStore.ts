@@ -12,6 +12,7 @@ interface BreedState {
   removeBreed: (breedName: string) => void;
   markDataAsLoaded: () => void;
   dataLoaded: boolean;
+  addBreed: (name: string, imageUrl: string) => void;
 }
 
 export const useStore = create<BreedState>((set) => ({
@@ -44,4 +45,9 @@ export const useStore = create<BreedState>((set) => ({
     })),
   dataLoaded: false,
   markDataAsLoaded: () => set({ dataLoaded: true }),
+  addBreed: (name: string, imageUrl: string) =>
+    set((state) => ({
+      breeds: [...state.breeds, name],
+      images: { ...state.images, [name]: imageUrl },
+    })),
 }));
