@@ -1,7 +1,6 @@
-
-import React, { useState } from 'react';
-import { FaHeart } from 'react-icons/fa';
-import styles from './BreedCard.module.css';
+import React, { useState } from "react";
+import { FaHeart } from "react-icons/fa";
+import styles from "./BreedCard.module.css";
 
 interface BreedCardProps {
   breedName: string;
@@ -17,24 +16,15 @@ const BreedCard: React.FC<BreedCardProps> = ({ breedName, imageUrl }) => {
 
   return (
     <div className={styles.breedCard}>
-      <h2>{breedName}</h2>
+      <h2 className={styles.beedTitle}>{breedName}</h2>
       {imageUrl && (
-        <img
-          src={imageUrl}
-          alt={breedName}
-          className={styles.breedImage}
-        />
+        <img src={imageUrl} alt={breedName} className={styles.breedImage} />
       )}
       <div
-        className={styles.likeIcon}
+        className={`${styles.likeIcon} ${isLiked ? styles.liked : ""}`}
         onClick={handleLike}
       >
-        <FaHeart
-          style={{
-            color: isLiked ? 'red' : 'gray',
-            cursor: 'pointer',
-          }}
-        />
+        <FaHeart />
       </div>
     </div>
   );

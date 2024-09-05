@@ -1,21 +1,35 @@
 .breedCard {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 16px;
-    text-align: center;
-    position: relative;
-  }
-  
-  .breedImage {
-    max-width: 150px;
-    height: auto;
-    border-radius: 8px;
-  }
-  
-  .likeIcon {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px 16px 36px 16px;
+  margin: 16px;
+  text-align: center;
+  position: relative;
+}
+
+.beedTitle {
+  margin: 0px;
+}
+
+.beedTitle::first-letter {
+  text-transform: uppercase;
+}
+
+.breedImage {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.likeIcon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: gray;
+}
+
+.likeIcon.liked {
+  color: red;
+}
