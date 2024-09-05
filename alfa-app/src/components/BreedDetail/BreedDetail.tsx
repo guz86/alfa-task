@@ -9,8 +9,8 @@ const BreedDetail: React.FC = () => {
   return (
     <>
       <Link to="/products">Go to Breeds Page</Link>
-      <div className={styles.breedDetail}>
-        <h1>{breedName}</h1>
+      <div className={styles.detailContainer}>
+        <h1 className={styles.detailTitle}>{breedName}</h1>
         {breedName && images[breedName] && (
           <img
             src={images[breedName]}

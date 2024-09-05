@@ -11,7 +11,7 @@
     text-transform: capitalize;
   }
   
-  .detailImage {
+  .breedImage {
     width: 100%;
     max-width: 600px;
     height: auto;
@@ -20,32 +20,10 @@
     margin-bottom: 20px;
   }
   
-  .detailDescription {
+  .breedDetail {
     font-size: 1.2rem;
     line-height: 1.6;
     color: #333;
     margin-bottom: 20px;
-  }
-  
-  .backButton {
-    display: inline-block;
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s;
-  }
-  
-  .backButton:hover {
-    background-color: #0056b3;
-  }
-  
-  .errorMessage {
-    color: red;
-    font-size: 1rem;
   }
   
