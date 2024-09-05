@@ -2,21 +2,24 @@ import { FaHeart, FaTrash } from "react-icons/fa";
 import styles from "./BreedCard.module.css";
 import { BreedCardProps } from "../../interfaces";
 import { useStore } from "../../store/useStore";
+import { Link } from "react-router-dom";
 
 const BreedCard: React.FC<BreedCardProps> = ({ breedName, imageUrl }) => {
   const { likedBreeds, toggleLike, removeBreed } = useStore();
   const isLiked = likedBreeds.has(breedName);
 
-  const handleLike = () => {
+  const handleLike = (event: React.MouseEvent) => {
+    event.preventDefault();
     toggleLike(breedName);
   };
 
-  const handleDelete = () => {
+  const handleDelete = (event: React.MouseEvent) => {
+    event.preventDefault();
     removeBreed(breedName);
   };
 
   return (
-    <div className={styles.breedCard}>
+    <Link to={`/products/${breedName}`} className={styles.breedCard}>
       <h2 className={styles.beedTitle}>{breedName}</h2>
       {imageUrl && (
         <img src={imageUrl} alt={breedName} className={styles.breedImage} />
@@ -32,7 +35,7 @@ const BreedCard: React.FC<BreedCardProps> = ({ breedName, imageUrl }) => {
           <FaTrash />
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

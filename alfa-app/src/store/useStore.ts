@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 interface BreedState {
   breeds: string[];
@@ -10,6 +10,8 @@ interface BreedState {
   setBreeds: (breeds: string[]) => void;
   setImages: (images: Record<string, string>) => void;
   removeBreed: (breedName: string) => void;
+  markDataAsLoaded: () => void;
+  dataLoaded: boolean;
 }
 
 export const useStore = create<BreedState>((set) => ({
@@ -36,6 +38,10 @@ export const useStore = create<BreedState>((set) => ({
       images: Object.fromEntries(
         Object.entries(state.images).filter(([key]) => key !== breedName)
       ),
-      likedBreeds: new Set([...state.likedBreeds].filter((likedBreed) => likedBreed !== breedName)),
+      likedBreeds: new Set(
+        [...state.likedBreeds].filter((likedBreed) => likedBreed !== breedName)
+      ),
     })),
+  dataLoaded: false,
+  markDataAsLoaded: () => set({ dataLoaded: true }),
 }));

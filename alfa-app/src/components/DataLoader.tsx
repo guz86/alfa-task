@@ -4,7 +4,7 @@ import { BreedImage, BreedListType } from "../interfaces";
 import { fetchDogBreeds, fetchRandomImageBreed } from "../utils/apiUtils";
 
 const DataLoader: React.FC = () => {
-  const { setBreeds, setImages } = useStore();
+  const { setBreeds, setImages, dataLoaded, markDataAsLoaded } = useStore();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,12 +31,15 @@ const DataLoader: React.FC = () => {
         );
 
         setImages(imageMap);
+        markDataAsLoaded();
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
-    fetchData();
+    if (!dataLoaded) {
+      fetchData();
+    }
   }, []);
 
   return null;

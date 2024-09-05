@@ -1,10 +1,17 @@
 .breedCard {
-  border: 1px solid #ddd;
+  border: 1px solid #817c7c;
   border-radius: 8px;
   padding: 6px 16px 40px 16px;
   margin: 16px;
   text-align: center;
   position: relative;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+.breedCard:hover {
+  background-color: #383737;
+  transform: scale(1.03);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .beedTitle {
@@ -34,6 +41,11 @@
   cursor: pointer;
   color: gray;
 }
+
+.likeIcon:hover {
+    cursor: pointer;
+    color: rgb(163, 163, 163);
+  }
 
 .likeIcon.liked {
   color: red;
