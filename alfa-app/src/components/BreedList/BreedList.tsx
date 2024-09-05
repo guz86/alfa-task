@@ -1,21 +1,19 @@
+
+import React from 'react';
 import { BreedListProps } from "../../interfaces";
+import BreedCard from '../BreedCard/BreedCard';
 import styles from "./BreedList.module.css";
 
-const BreedList = ({ breeds, images }: BreedListProps) => {
+const BreedList: React.FC<BreedListProps> = ({ breeds, images }: BreedListProps) => {
   return (
     <div className={styles.breedListContainer}>
       {breeds &&
         breeds.map((breedName) => (
-          <div key={breedName} className={styles.breedCard}>
-            <h2>{breedName}</h2>
-            {images && images[breedName] && (
-              <img
-                src={images[breedName]}
-                alt={breedName}
-                className={styles.breedImage}
-              />
-            )}
-          </div>
+          <BreedCard
+            key={breedName}
+            breedName={breedName}
+            imageUrl={images && images[breedName]}
+          />
         ))}
     </div>
   );
