@@ -10,11 +10,11 @@ const DataLoader: React.FC = () => {
     const fetchData = async () => {
       try {
         const data: BreedListType = await fetchDogBreeds();
-        const first5Breeds: string[] = Object.keys(data).slice(0, 5);
+        const firstBreeds: string[] = Object.keys(data).slice(0, 12);
 
-        setBreeds(first5Breeds);
+        setBreeds(firstBreeds);
 
-        const breedImageRequests = first5Breeds.map((breed) =>
+        const breedImageRequests = firstBreeds.map((breed) =>
           fetchRandomImageBreed(breed).then((response: BreedImage) => ({
             breed,
             imageUrl: response.message,
@@ -40,7 +40,7 @@ const DataLoader: React.FC = () => {
     if (!dataLoaded) {
       fetchData();
     }
-  }, []);
+  }, [dataLoaded, setBreeds, setImages, markDataAsLoaded]);
 
   return null;
 };
