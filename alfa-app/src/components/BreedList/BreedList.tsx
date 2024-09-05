@@ -1,14 +1,24 @@
-
-import React from 'react';
+import React from "react";
 import { BreedListProps } from "../../interfaces";
-import BreedCard from '../BreedCard/BreedCard';
+import BreedCard from "../BreedCard/BreedCard";
 import styles from "./BreedList.module.css";
+import { useStore } from "../../store/useStore";
 
-const BreedList: React.FC<BreedListProps> = ({ breeds, images }: BreedListProps) => {
+const BreedList: React.FC<BreedListProps> = ({
+  breeds,
+  images,
+}: BreedListProps) => {
+  const { likedBreeds, filter } = useStore();
+
+  const filteredBreeds =
+    filter === "liked"
+      ? breeds.filter((breed) => likedBreeds.has(breed))
+      : breeds;
+
   return (
     <div className={styles.breedListContainer}>
-      {breeds &&
-        breeds.map((breedName) => (
+      {filteredBreeds &&
+        filteredBreeds.map((breedName) => (
           <BreedCard
             key={breedName}
             breedName={breedName}

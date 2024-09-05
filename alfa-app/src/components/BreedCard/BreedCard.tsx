@@ -1,14 +1,18 @@
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaTrash } from "react-icons/fa";
 import styles from "./BreedCard.module.css";
 import { BreedCardProps } from "../../interfaces";
 import { useStore } from "../../store/useStore";
 
 const BreedCard: React.FC<BreedCardProps> = ({ breedName, imageUrl }) => {
-  const { likedBreeds, toggleLike } = useStore();
+  const { likedBreeds, toggleLike, removeBreed } = useStore();
   const isLiked = likedBreeds.has(breedName);
 
   const handleLike = () => {
     toggleLike(breedName);
+  };
+
+  const handleDelete = () => {
+    removeBreed(breedName);
   };
 
   return (
@@ -17,11 +21,16 @@ const BreedCard: React.FC<BreedCardProps> = ({ breedName, imageUrl }) => {
       {imageUrl && (
         <img src={imageUrl} alt={breedName} className={styles.breedImage} />
       )}
-      <div
-        className={`${styles.likeIcon} ${isLiked ? styles.liked : ""}`}
-        onClick={handleLike}
-      >
-        <FaHeart />
+      <div className={styles.iconContainer}>
+        <div
+          className={`${styles.likeIcon} ${isLiked ? styles.liked : ""}`}
+          onClick={handleLike}
+        >
+          <FaHeart />
+        </div>
+        <div className={styles.deleteIcon} onClick={handleDelete}>
+          <FaTrash />
+        </div>
       </div>
     </div>
   );

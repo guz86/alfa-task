@@ -1,14 +1,14 @@
 .breedCard {
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 6px 16px 36px 16px;
+  padding: 6px 16px 40px 16px;
   margin: 16px;
   text-align: center;
   position: relative;
 }
 
 .beedTitle {
-  margin: 0px;
+  margin: 0;
 }
 
 .beedTitle::first-letter {
@@ -22,14 +22,28 @@
   border-radius: 8px;
 }
 
-.likeIcon {
+.iconContainer {
   position: absolute;
   bottom: 10px;
   right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.likeIcon {
   cursor: pointer;
   color: gray;
 }
 
 .likeIcon.liked {
   color: red;
+}
+
+.deleteIcon {
+  cursor: pointer;
+  color: gray;
+}
+
+.deleteIcon:hover {
+  color: black;
 }
