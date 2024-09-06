@@ -2,6 +2,10 @@
  
 Deploy: [https://guz86.github.io/alfa-task/](https://guz86.github.io/alfa-task/)
 
+- breeds: [https://guz86.github.io/alfa-task/products](https://guz86.github.io/alfa-task/products)
+- one breed: [https://guz86.github.io/alfa-task/products/african](https://guz86.github.io/alfa-task/products/african)
+- add breed: [https://guz86.github.io/alfa-task/create-product](https://guz86.github.io/alfa-task/create-product)
+
 ## Author
 
 - [Pavel Gordienko](https://github.com/guz86)
