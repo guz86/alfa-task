@@ -10,7 +10,7 @@ const AddProductButton: React.FC = () => {
 
   return (
     <button onClick={handleClick} className={styles.addButton}>
-      Add Product
+      Add Breed
     </button>
   );
 };

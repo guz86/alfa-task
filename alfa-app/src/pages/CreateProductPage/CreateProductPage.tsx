@@ -43,7 +43,7 @@ const CreateProductPage: React.FC = () => {
     <div className={styles.createProductPage}>
       <Link to="/products">Go to Breeds Page</Link>
 
-      <h1>Create New Product</h1>
+      <h1>Create New Breed</h1>
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.formGroup}>
           <label htmlFor="name">Name:</label>
@@ -70,7 +70,7 @@ const CreateProductPage: React.FC = () => {
           )}
         </div>
         <button type="submit" className={styles.submitButton}>
-          Add Product
+          Add Breed
         </button>
       </form>
     </div>

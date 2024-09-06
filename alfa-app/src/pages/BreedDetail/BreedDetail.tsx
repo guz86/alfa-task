@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import styles from "./BreedDetail.module.css";
 import { useStore } from "../../store/useStore";
+import DataLoader from "../../components/DataLoader";
 
 const BreedDetail: React.FC = () => {
   const { breedName } = useParams<{ breedName: string }>();
@@ -8,6 +9,7 @@ const BreedDetail: React.FC = () => {
 
   return (
     <>
+      <DataLoader />
       <Link to="/products">Go to Breeds Page</Link>
       <div className={styles.detailContainer}>
         <h1 className={styles.detailTitle}>{breedName}</h1>
