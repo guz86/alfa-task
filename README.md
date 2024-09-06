@@ -33,6 +33,9 @@ npm run dev
 - Typescript
 - Zustand
 
+## API
+- [https://dog.ceo/dog-api/](https://dog.ceo/dog-api/)
+
 ## Folder structure
 
 - Components - components of application.
